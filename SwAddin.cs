@@ -12,8 +12,8 @@ namespace SingularityAddin
 {
     [Guid("b6fb78e7-dda9-4638-b868-bd25a24de56e"), ComVisible(true)]
     [SwAddin(
-        Description = "$safeprojectname$ description",
-        Title = "$safeprojectname$",
+        Description = "Singularity Addin for simplier addons, allowing plugins to just work, with a sw wrapper",
+        Title = "Singularity Addin",
         LoadAtStartup = true
         )]
     public class SwAddin : ISwAddin
@@ -24,11 +24,8 @@ namespace SingularityAddin
         private int addinID = 0;
         private int registerID;
 
-               
 
-        // Public Properties
-        public ISingleSldWorks SwApp { get; private set; }
-        public ICommandManager CmdMgr => SwApp.CommandManager;       
+        SingularityCore.SingleCommandMgr SwApp { get; set; }
 
         #endregion
 
@@ -70,14 +67,14 @@ namespace SingularityAddin
             catch (System.NullReferenceException nl)
             {
                 Console.WriteLine("There was a problem registering this dll: SWattr is null. \n\"" + nl.Message + "\"");
-                System.Windows.Forms.MessageBox.Show("There was a problem registering this dll: SWattr is null.\n\"" + nl.Message + "\"");
+                Logger.Error(nl,"There was a problem registering this dll: SWattr is null.\n\"" + nl.Message + "\"");
             }
 
             catch (System.Exception e)
             {
                 Console.WriteLine(e.Message);
 
-                System.Windows.Forms.MessageBox.Show("There was a problem registering the function: \n\"" + e.Message + "\"");
+                Logger.Error(e,"There was a problem registering the function: \n\"" + e.Message + "\"");
             }
         }
 
@@ -98,12 +95,12 @@ namespace SingularityAddin
             catch (System.NullReferenceException nl)
             {
                 Console.WriteLine("There was a problem unregistering this dll: " + nl.Message);
-                System.Windows.Forms.MessageBox.Show("There was a problem unregistering this dll: \n\"" + nl.Message + "\"");
+                Logger.Error(nl,"There was a problem unregistering this dll: \n\"" + nl.Message + "\"");
             }
             catch (System.Exception e)
             {
                 Console.WriteLine("There was a problem unregistering this dll: " + e.Message);
-                System.Windows.Forms.MessageBox.Show("There was a problem unregistering this dll: \n\"" + e.Message + "\"");
+                Logger.Error(e,"There was a problem unregistering this dll: \n\"" + e.Message + "\"");
             }
         }
 
@@ -112,26 +109,22 @@ namespace SingularityAddin
         #region ISwAddin Implementation
         public SwAddin()
         {
+            //TODO updater?
+            Logger.Trace("Singularity Starting");
         }
 
-        public bool ConnectTSingle(object ThisSW, int cookie)
+        public bool ConnectToSW(object ThisSW, int cookie)
         {
-            SwApp = new SingleSldWorks((ISldWorks)ThisSW, cookie);
+            Logger.Trace("Singularity Starting to connect to SW");
+            SwApp = new SingularityCore.SingleCommandMgr((ISldWorks)ThisSW, cookie);
             addinID = cookie;
-
-
-
-            //Setup callbacks
-            SwApp.Solidworks.SetAddinCallbackInfo(0, this, addinID);
-
-          return  ((SingleSldWorks)SwApp).BeginSetup();            
-
+            return true;
         }
 
         public bool DisconnectFromSW()
         {
-            ((SingleSldWorks)SwApp).DisconnectFromSW();
-            
+            Logger.Trace("Singularity disconnecting to SW");
+            SwApp.DisconnectFromSw();            
                         
             //The addin _must_ call GC.Collect() here in order to retrieve all managed code pointers 
             GC.Collect();
@@ -142,6 +135,7 @@ namespace SingularityAddin
 
             return true;
         }
+        
         #endregion
 
     }

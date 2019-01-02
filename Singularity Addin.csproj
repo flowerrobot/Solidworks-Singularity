@@ -72,10 +72,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="register_assembly.cmd" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Singularity Base\Singularity Base.csproj">
       <Project>{cad6ea1c-4ca8-4b5a-9897-a982470b6d75}</Project>
@@ -85,6 +84,21 @@
       <Project>{3114d9c1-acf0-4d79-bfb6-4d57713fae2c}</Project>
       <Name>Singularity Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\addinicon.bmp" />
+    <Content Include="Images\mainicon_128.png" />
+    <Content Include="Images\mainicon_20.png" />
+    <Content Include="Images\mainicon_32.png" />
+    <Content Include="Images\mainicon_40.png" />
+    <Content Include="Images\mainicon_64.png" />
+    <Content Include="Images\mainicon_96.png" />
+    <Content Include="Images\toolbar128x.png" />
+    <Content Include="Images\toolbar20x.png" />
+    <Content Include="Images\toolbar32x.png" />
+    <Content Include="Images\toolbar40x.png" />
+    <Content Include="Images\toolbar64x.png" />
+    <Content Include="Images\toolbar96x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
