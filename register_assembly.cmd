@@ -3,7 +3,7 @@ rem
 rem Registering Solidworks Addin
 rem 
 echo #####################################################
-echo Adding the Outotec Solidworks Addin to this system...
+echo Adding the Singularity Solidworks Addin to this system...
 echo #####################################################
 echo. 
 :runCheck
@@ -19,12 +19,11 @@ if "%ERRORLEVEL%"=="0" (
 
 echo. 
 rem echo ### Importing Registery keys 
-rem reg IMPORT "C:\EDM_QA\11 Document Templates\SolidWorks\OutotecAddin\OSwAddin.reg"
 
 echo. 
 echo ### Registering COM Assemblies
 set FMWK="v4.0.30319"
-set Target="C:\Users\setruh\OneDrive\Documents\Programming\BitBucket\SW Addin\Outotec SW Addin\bin\Debug\Outotec SW Addin.dll"
+set Target="C:\Users\sethr\OneDrive\Documents\Programming\GitHub\Solidworks Addin\Singularity Addin\Singularity Addin\bin\Debug\Singularity Addin.dll"
 set Exec="%Windir%\Microsoft.NET\Framework64\%FMWK%\regasm.exe"
 echo %Exec% %Target% /codebase
 IF EXIST %Exec% %Exec% %Target% /codebase

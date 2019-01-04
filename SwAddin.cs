@@ -10,7 +10,7 @@ using SingularityCore;
 
 namespace SingularityAddin
 {
-    [Guid("b6fb78e7-dda9-4638-b868-bd25a24de56e"), ComVisible(true)]
+    [Guid("E9FD9E26-4301-469D-B565-757AEBF0A544"), ComVisible(true)]
     [SwAddin(
         Description = "Singularity Addin for simplier addons, allowing plugins to just work, with a sw wrapper",
         Title = "Singularity Addin",
@@ -21,8 +21,7 @@ namespace SingularityAddin
         public static Logger Logger { get; } = NLog.LogManager.GetLogger("SWAddin");
 
         #region Local Variables                
-        private int addinID = 0;
-        private int registerID;
+        private int _addinId = 0;
 
 
         SingularityCore.SingleCommandMgr SwApp { get; set; }
@@ -113,11 +112,11 @@ namespace SingularityAddin
             Logger.Trace("Singularity Starting");
         }
 
-        public bool ConnectToSW(object ThisSW, int cookie)
+        public bool ConnectToSW(object thisSw, int cookie)
         {
             Logger.Trace("Singularity Starting to connect to SW");
-            SwApp = new SingularityCore.SingleCommandMgr((ISldWorks)ThisSW, cookie);
-            addinID = cookie;
+            SwApp = new SingularityCore.SingleCommandMgr((ISldWorks)thisSw, cookie);
+            _addinId = cookie;
             return true;
         }
 
