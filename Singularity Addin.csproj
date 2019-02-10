@@ -38,19 +38,19 @@
     </Reference>
     <Reference Include="SolidWorks.Interop.sldworks, Version=25.5.0.83, Culture=neutral, PublicKeyToken=7c4797c3e4eeac03, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\..\..\..\..\temp\_Nugetpackages\Solidworks.Interop.Basic.17.5.2\lib\net20\SolidWorks.Interop.sldworks.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="SolidWorks.Interop.swcommands, Version=25.5.0.83, Culture=neutral, PublicKeyToken=0fda92720ba7919f, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\..\..\..\..\temp\_Nugetpackages\Solidworks.Interop.Basic.17.5.2\lib\net20\SolidWorks.Interop.swcommands.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="SolidWorks.Interop.swconst, Version=25.5.0.83, Culture=neutral, PublicKeyToken=19f43e188e4269d8, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\..\..\..\..\temp\_Nugetpackages\Solidworks.Interop.Basic.17.5.2\lib\net20\SolidWorks.Interop.swconst.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="SolidWorks.Interop.swpublished">
       <HintPath>..\..\..\Outotec Codes\SW Addin\Outotec SW Addin\bin\Debug\SolidWorks.Interop.swpublished.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="solidworkstools">
       <HintPath>..\..\..\Outotec Codes\SW Addin\Outotec SW Addin\bin\Debug\solidworkstools.dll</HintPath>

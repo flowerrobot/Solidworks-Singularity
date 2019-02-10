@@ -23,7 +23,7 @@ rem echo ### Importing Registery keys
 echo. 
 echo ### Registering COM Assemblies
 set FMWK="v4.0.30319"
-set Target="C:\Users\sethr\OneDrive\Documents\Programming\GitHub\Solidworks Addin\Singularity Addin\Singularity Addin\bin\Debug\Singularity Addin.dll"
+set Target="E:\OneDrive\Documents\Programming\GitHub\Solidworks Addin\Singularity Addin\Singularity Addin\bin\Debug\Singularity Addin.dll"
 set Exec="%Windir%\Microsoft.NET\Framework64\%FMWK%\regasm.exe"
 echo %Exec% %Target% /codebase
 IF EXIST %Exec% %Exec% %Target% /codebase

@@ -3,10 +3,7 @@ using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swpublished;
 using SolidWorksTools;
 using System;
-using System.Collections;
 using System.Runtime.InteropServices;
-using SingularityBase;
-using SingularityCore;
 
 namespace SingularityAddin
 {
@@ -24,7 +21,7 @@ namespace SingularityAddin
         private int _addinId = 0;
 
 
-        SingularityCore.SingleCommandMgr SwApp { get; set; }
+        internal SingularityCore.SingleCommandMgr SwApp { get; set; }
 
         #endregion
 
@@ -66,14 +63,14 @@ namespace SingularityAddin
             catch (System.NullReferenceException nl)
             {
                 Console.WriteLine("There was a problem registering this dll: SWattr is null. \n\"" + nl.Message + "\"");
-                Logger.Error(nl,"There was a problem registering this dll: SWattr is null.\n\"" + nl.Message + "\"");
+                Logger.Error(nl, "There was a problem registering this dll: SWattr is null.\n\"" + nl.Message + "\"");
             }
 
             catch (System.Exception e)
             {
                 Console.WriteLine(e.Message);
 
-                Logger.Error(e,"There was a problem registering the function: \n\"" + e.Message + "\"");
+                Logger.Error(e, "There was a problem registering the function: \n\"" + e.Message + "\"");
             }
         }
 
@@ -94,12 +91,12 @@ namespace SingularityAddin
             catch (System.NullReferenceException nl)
             {
                 Console.WriteLine("There was a problem unregistering this dll: " + nl.Message);
-                Logger.Error(nl,"There was a problem unregistering this dll: \n\"" + nl.Message + "\"");
+                Logger.Error(nl, "There was a problem unregistering this dll: \n\"" + nl.Message + "\"");
             }
             catch (System.Exception e)
             {
                 Console.WriteLine("There was a problem unregistering this dll: " + e.Message);
-                Logger.Error(e,"There was a problem unregistering this dll: \n\"" + e.Message + "\"");
+                Logger.Error(e, "There was a problem unregistering this dll: \n\"" + e.Message + "\"");
             }
         }
 
@@ -123,8 +120,8 @@ namespace SingularityAddin
         public bool DisconnectFromSW()
         {
             Logger.Trace("Singularity disconnecting to SW");
-            SwApp.DisconnectFromSw();            
-                        
+            SwApp.DisconnectFromSw();
+
             //The addin _must_ call GC.Collect() here in order to retrieve all managed code pointers 
             GC.Collect();
             GC.WaitForPendingFinalizers();
@@ -134,7 +131,7 @@ namespace SingularityAddin
 
             return true;
         }
-        
+
         #endregion
 
     }
